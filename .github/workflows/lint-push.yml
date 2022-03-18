@@ -7,47 +7,7 @@ on:
       - main
       - 'push-action/**'
 
-jobs:
-  css:
-    name: Lint css
-    runs-on: ubuntu-latest
-    steps:
-      - name: check out code 🛎
-        uses: actions/checkout@v2
-        
-      - name: npm ci
-        run: npm ci
-    
-      - name: Run Stylelint css
-        run: npm run stylelint-css
-        
-      - uses: actions/upload-artifact@v2
-        with:
-          name: css-linted
-          path: | 
-            ./**/*.css
-            !**/node_modules/
-
-  scss:
-    name: Lint scss
-    runs-on: ubuntu-latest
-    steps:
-      - name: check out code 🛎
-        uses: actions/checkout@v2
-        
-      - name: npm ci
-        run: npm ci
-    
-      - name: Run Stylelint scss
-        run: npm run stylelint-scss
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: scss-linted
-          path: | 
-            ./**/*.scss
-            !**/node_modules/
-        
+jobs:        
   js-ts:
     name: Lint js-ts
     runs-on: ubuntu-latest
@@ -69,32 +29,6 @@ jobs:
             ./**/*.js
             !**/node_modules/
         
-  html:
-    name: Lint html
-    runs-on: ubuntu-latest
-    steps:
-      - name: check out code 🛎
-        uses: actions/checkout@v2
-        
-      - name: npm ci
-        run: npm ci
-    
-      - name: Run HTML-Validate
-        run: npm run html-validate
-
-  ejs:
-    name: Lint ejs templates
-    runs-on: ubuntu-latest
-    steps:
-      - name: check out code 🛎
-        uses: actions/checkout@v2
-        
-      - name: npm ci
-        run: npm ci
-    
-      - name: Run ejs-Validate
-        run: npm run ejs-validate
-        
   push:
     name: Push changes
     runs-on: ubuntu-latest
@@ -102,14 +36,6 @@ jobs:
     steps:
       - name: check out code 🛎
         uses: actions/checkout@v2
-        
-      - uses: actions/download-artifact@v2
-        with:
-          name: css-linted
-
-      - uses: actions/download-artifact@v2
-        with:
-          name: scss-linted
           
       - uses: actions/download-artifact@v2
         with:
