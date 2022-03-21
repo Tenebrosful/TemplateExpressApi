@@ -32,7 +32,7 @@ jobs:
   push:
     name: Push changes
     runs-on: ubuntu-latest
-    needs: [css, scss, js-ts, html, ejs]
+    needs: [js-ts]
     steps:
       - name: check out code 🛎
         uses: actions/checkout@v2
