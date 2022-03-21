@@ -22,6 +22,6 @@ app.use(error400);
 app.use(error500); // Must be on last position
 
 app.listen(port, () => {
-    console.log("PORT "+process.env.EXPRESS_PORT);
+    console.log("PORT " + process.env.EXPRESS_PORT);
     console.log(`Server started at port http://localhost:${port}`);
 });
